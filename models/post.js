@@ -10,7 +10,7 @@ const postSchema = new Schema(
     },
     imageUrl: {
       type: String,
-      required: true,
+      required: false,
     },
     content: {
       type: String,
@@ -18,7 +18,7 @@ const postSchema = new Schema(
     },
     creator: {
       type: Object,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }
