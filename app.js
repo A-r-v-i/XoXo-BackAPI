@@ -55,7 +55,7 @@ mongoose
   .connect(mongoUri, { useUnifiedTopology: true, useNewUrlParser: true })
   .then((result) => {
     app.listen(PORT, () => {
-      console.log(`${8080} connected.`);
+      console.log(`${PORT} connected.`);
     });
   })
   .catch((err) => console.log(err));
