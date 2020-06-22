@@ -1,6 +1,6 @@
 {
   "env": {
-    "MONGO_USERNAME": "aravind",
+    "MONGO_USER": "aravind",
     "MONGO_PASSWORD": "arvi2098",
     "MONGO_DEFAULT_DATABASE": "messages"
   }

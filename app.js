@@ -1,14 +1,20 @@
 const path = require("path");
+const fs = require('fs');
+const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const uuidv4 = require("uuid/v4");
-const PORT = 8080 || process.env;
+const port = 8080 || process.env.PORT;
 const app = express();
 const feedRoute = require("./routes/feed");
 const authRoute = require("./routes/auth");
 const { mongoUri } = require("./track/url.json");
+
+//const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster-node-complete-sfr53.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
+// const privateKey = fs.readFileSync('server.key');
+// const certificate = fs.readFileSync('server.cert');
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -54,8 +60,11 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(mongoUri, { useUnifiedTopology: true, useNewUrlParser: true })
   .then((result) => {
-    app.listen(PORT, () => {
-      console.log(`${PORT} connected.`);
+
+    //https.createServer({key: privateKey, cert: certificate},app).listen(port);
+
+    app.listen(port, () => {
+      console.log(`${port} connected.`);
     });
   })
   .catch((err) => console.log(err));
